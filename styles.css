@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'Pixel';
+  src:
+    local('assets/minecraft.otf') format('opentype'),
+    url('assets/minecraft.otf') format('opentype');
+    font-display: block;
+}
+
+@font-face {
+  font-family: 'Aptos';
+  src:
+    local('assets/font.ttf') format('truetype'),
+    url('assets/font.ttf') format('truetype');
+    font-display: block;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  background-color: #F8F6ED;
+}
+
+body {
+    font-family: 'Pixel';
+    background-color: #5BE1FF;
+    overflow: hidden;
+}
+
+.navbar {
+  background-color: #F8F6ED;
+  overflow: hidden;
+  display: flex;
+}
+.navbar a {
+  flex: 1;
+  float: left;
+  color: #0B0909;
+  text-align: center;
+  padding: 20px 10px;
+  text-decoration: none;
+  font-size: 17px;
+  margin: auto;
+}
+
+.navbar a:first-child {
+  margin-left: 0;
+}
+
+.navbar a:nth-last-child(2) {
+  margin-right: 0;
+}
+
+.navbar a:hover {
+  background-color: #3978a8;
+  color: #F8F6ED;
+}
+/* Will add updates to this */
+.navbar a.active {
+  background-color: #394778;
+  color: #F8F6ED;
+}
+
+.navbar .icon {
+  margin-right: 0;
+  display:none;
+}
+@media screen and (max-width: 355px) {
+  .navbar a {
+
+  }
+
+}
+.navbar a:not(.icon) {
+}
+
+
+
+#home {
+  display: flex;
+}
+
+#home #introduction {
+  flex: 1;
+  padding: 20px;
+  margin: 40px 40px;
+  background-color: #F8F6ED;
+  width: 200px;
+  animation-duration: 3s;
+  animation-name: slide-in;
+}
+
+@keyframes slide-in {
+  from {
+    translate: 150vw 0;
+    scale: 300% 300%;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
+
+
+@media screen and (max-width: 355px) {
+  #home #introduction {
+    margin: 40px auto;
+  }
+}
