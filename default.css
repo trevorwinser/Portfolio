@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Aptos';
+  src:
+    local('assets/font.ttf') format('truetype'),
+    url('assets/font.ttf') format('truetype');
+    font-display: block;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    font-family: 'Aptos';
+    overflow: hidden;
+    background: #0e0e0e;
+}

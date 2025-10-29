@@ -1,44 +1,14 @@
-@font-face {
-  font-family: 'Aptos';
-  src:
-    local('assets/font.ttf') format('truetype'),
-    url('assets/font.ttf') format('truetype');
-    font-display: block;
-}
-
-
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-    margin: 0;
-    color: white;
-}
-
 body {
-    display: flex;
-    font-family: 'Aptos';
-    overflow: hidden;
-    background: #0e0e0e;
-}
-
-body {
-    background: #0e0e0e;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
+  background: #0e0e0e;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
 }
 
 
 .center {
-    padding: 40vh 0px;
-    margin: auto;
+  padding: 40vh 0px;
+  margin: auto;
 }
 .layered-name {
   position: relative;
@@ -56,20 +26,20 @@ body {
 }
 
 .layered-name span:nth-child(1) {
-    color: #ff0057;
-    z-index: 1;
+  color: #ff0057;
+  z-index: 1;
 }
 .layered-name span:nth-child(2) {
-    color: #00e1ff;
-    z-index: 2;
+  color: #00e1ff;
+  z-index: 2;
 }
 .layered-name span:nth-child(3) {
-    color: #ffde00;
-    z-index: 3;
+  color: #ffde00;
+  z-index: 3;
 }
 .layered-name span:nth-child(4) {
-    color: #ffffff;
-    z-index: 4;
+  color: #ffffff;
+  z-index: 4;
 }
 
 .layered-name:hover span:nth-child(1) {
@@ -95,7 +65,7 @@ body {
 .circle {
   opacity: 0;
   transform: scale(0.5);
-  transition: transform 1.5s ease, opacity 1.5s ease;
+  transition: transform 1.0s ease-in-out, opacity 2.0s ease-in-out;
 }
 
 .top-left { 
@@ -172,4 +142,4 @@ body {
 }
 
 .circle:nth-child(2n) { transition-delay: 0.3s; }
-.circle:nth-child(3n) { transition-delay: 0.6s; }
+.circle:nth-child(3n) { transition-delay: 0.45s; }
