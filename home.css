@@ -1,0 +1,243 @@
+body {
+  background: #0e0e0e;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+}
+
+
+.center {
+  padding: 40vh 0px;
+  margin: auto;
+}
+.layered-name {
+  justify-content: center;
+  position: relative;
+  font-size: 4rem;
+  font-weight: 900;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.layered-name a {
+  pointer-events: none;
+}
+
+.layered-name:hover a {
+  pointer-events: auto;
+}
+
+.layered-name span,a {
+  z-index: 1;
+  position: absolute;
+  transform: translate(-50%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.layered-name span:nth-child(1) {
+  color: #ff0057;
+  z-index: 1;
+}
+.layered-name span:nth-child(2) {
+  color: #00e1ff;
+  z-index: 2;
+}
+.layered-name span:nth-child(3) {
+  color: #ffde00;
+  z-index: 3;
+}
+.layered-name span:nth-child(4) {
+  color: #ffffff;
+  z-index: 4;
+}
+.layered-name a:nth-child(5) span {
+  color: #00e1ff;
+  z-index: 1;
+  opacity: 0;
+}
+.layered-name a:nth-child(6) span {
+  color: #ff0057;
+  z-index: 1;
+  opacity: 0;
+}
+.layered-name a:nth-child(7) span {
+  color: #ffde00;
+  z-index: 1;
+  opacity: 0;
+}
+
+.layered-name:hover span:nth-child(1) {
+  transform: translate(calc(-50% - 0.33rem), calc(-0.33rem));
+}
+.layered-name:hover span:nth-child(2) {
+  transform: translate(calc(-50% + 0.33rem), calc(0.33rem));
+}
+.layered-name:hover span:nth-child(3) {
+  transform: translate(calc(-50% - 0.33rem), calc(0.33rem));
+}
+.layered-name:hover a:nth-child(5) span {
+  opacity: 1;
+  transform: translate(calc(-50%), -1.4em);
+}
+.layered-name:hover a:nth-child(6) span {
+  opacity: 1;
+  transform: translate(calc(-50%), 2.3em);
+}
+.layered-name:hover a:nth-child(7) span {
+  opacity: 1;
+  transform: translate(calc(-50%), 3.8em);
+}
+
+
+.circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle {
+  z-index: 0;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.top-left { 
+  position: absolute;
+  top: -200px; 
+  left: -200px; 
+}
+.top-right { 
+  position: absolute;
+  top: -200px; 
+  right: -200px; 
+}
+.bottom-left { 
+  position: absolute;
+  bottom: -200px; 
+  left: -200px; 
+}
+.bottom-right { 
+  position: absolute;
+  bottom: -200px; 
+  right: -200px; 
+}
+
+.layered-name:hover ~ .circles .top-left .circle {
+  opacity: 1;
+}
+.layered-name:hover ~ .circles .top-left .circle:nth-child(1) {
+  transform: translate(170px, 170px) scale(2);
+}
+.layered-name:hover ~ .circles .top-left .circle:nth-child(2) {
+  transform: translate(190px, 150px) scale(1.8);
+}
+.layered-name:hover ~ .circles .top-left .circle:nth-child(3) {
+  transform: translate(150px, 190px) scale(2.2);
+}
+
+.layered-name:hover ~ .circles .top-right .circle {
+  opacity: 1;
+}
+.layered-name:hover ~ .circles .top-right .circle:nth-child(1) {
+  transform: translate(-150px, 190px) scale(2.2);
+}
+.layered-name:hover ~ .circles .top-right .circle:nth-child(2) {
+  transform: translate(-190px, 150px) scale(1.8);
+}
+.layered-name:hover ~ .circles .top-right .circle:nth-child(3) {
+  transform: translate(-170px, 170px) scale(2);
+}
+
+@media screen and (min-height: 700px) {
+  .layered-name:hover ~ .circles .bottom-left .circle {
+    opacity: 1;
+  }
+  .layered-name:hover ~ .circles .bottom-left .circle:nth-child(1) {
+    transform: translate(170px, -170px) scale(2);
+  }
+  .layered-name:hover ~ .circles .bottom-left .circle:nth-child(2) {
+    transform: translate(190px, -150px) scale(2.2);
+  }
+  .layered-name:hover ~ .circles .bottom-left .circle:nth-child(3) {
+    transform: translate(150px, -220px) scale(1.8);
+  }
+
+  .layered-name:hover ~ .circles .bottom-right .circle {
+    opacity: 1;
+  }
+  .layered-name:hover ~ .circles .bottom-right .circle:nth-child(1) {
+    transform: translate(-150px, -190px) scale(2);
+  }
+  .layered-name:hover ~ .circles .bottom-right .circle:nth-child(2) {
+    transform: translate(-190px, -150px) scale(2.2);
+  }
+  .layered-name:hover ~ .circles .bottom-right .circle:nth-child(3) {
+    transform: translate(-170px, -170px) scale(1.8);
+  }
+}
+
+.circle:nth-child(2n) { transition-delay: 0.1s; }
+.circle:nth-child(3n) { transition-delay: 0.2s; }
+
+.circle .top-left:nth-child(2n) { transition-delay: 0.1s; }
+.circle .top-left:nth-child(1n) { transition-delay: 0.2s; }
+.circle .bottom-left:nth-child(2n) { transition-delay: 0.1s; }
+.circle .bottom-left:nth-child(1n) { transition-delay: 0.2s; }
+
+
+.star-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+  transform-origin: 50% 50%; /* center of container */
+  animation: container-spin 300s linear infinite; /* slow continuous spin */
+}
+
+@keyframes container-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.star-container img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity:0;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0) brightness(118%) contrast(100%);
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+.layered-name:hover ~ .star-container img {
+  z-index:0;
+  opacity:1;
+}
+
+.star-container img:nth-child(even) {
+  animation: spin-right 3s linear infinite;
+}
+
+.star-container img:nth-child(odd) {
+  animation: spin-left 3s linear infinite;
+}
+@keyframes spin-right {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes spin-left {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(-180deg) scale(2); }
+  100% { transform: rotate(-360deg) scale(1); }
+}
+
