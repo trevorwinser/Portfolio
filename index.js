@@ -1,89 +1,88 @@
-const layeredName = document.querySelector('.layered-name');
-
-//document.addEventListener('mousemove', (e) => {
-//    const rect = layeredName.getBoundingClientRect();
-//    const centerX = rect.left + rect.width / 2;
-//    const centerY = rect.top + rect.height / 2;
-//
-//    // Distance from mouse to center of the text
-//    const deltaX = e.screenX - centerX;
-//    const deltaY = e.screenY - centerY;
-//
-//    // Maximum distance to start moving (px)
-//    const minDistance = 50;
-//
-//    // If mouse is close enough, move slightly
-//    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-//    if ( distance > minDistance) {
-//        const moveX = (deltaX) / (5*window.screen.width/window.screen.height);
-//        const moveY = (deltaY) / (5*window.screen.height/window.screen.width);
-//        layeredName.style.transform = `translate(${moveX}px, ${moveY}px)`;
-//    } else {
-//        layeredName.style.transform = `translate(0, 0)`;
-//    }
-//    console.log(e.screenX, e.screenY)
-//});
-//
-//// Reset position when mouse leaves window
-//document.addEventListener('mouseleave', () => {
-//    layeredName.style.transform = `translate(0, 0)`;
-//});
-
-
-// let mouseX = 0;
-// let mouseY = 0;
-// let currentX = 0;
-// let currentY = 0;
-// const lerpFactor = 0.3; // smaller = slower, smoother
-
-// document.addEventListener('mousemove', (e) => {
-//   mouseX = e.clientX;
-//   mouseY = e.clientY;
-// });
-
-// function animate() {
-//   // Get the element’s current center
-//   const rect = layeredName.getBoundingClientRect();
-//   const centerX = rect.left + rect.width / 2;
-//   const centerY = rect.top + rect.height / 2;
-
-//   // Compute deltas
-//   const deltaX = mouseX - centerX;
-//   const deltaY = mouseY - centerY;
-
-//   // Lerp toward the target
-//   currentX += (deltaX - currentX) * lerpFactor;
-//   currentY += (deltaY - currentY) * lerpFactor;
-
-//   // Apply smooth translation
-//   layeredName.style.transform = `translate(${currentX}px, ${currentY}px)`;
-
-//   requestAnimationFrame(animate);
-// }
-
-// animate();
 const starContainer = document.querySelector('.star-container');
-const numberOfStars = Math.log(window.screen.width * window.screen.height) * 5;
+const numberOfStars = Math.log(window.screen.width * window.screen.height) * 2;
 
-const noise = new Noise(Math.random());
+// Use consistent unit (square area)
+const useVmax = window.innerWidth > window.innerHeight ? 'vw' : 'vh';
 
 for (let i = 0; i < numberOfStars; i++) {
   const star = document.createElement('img');
-  star.src = 'assets/star.svg';
+  star.src = './assets/images/star.svg';
+  star.style.position = 'absolute';
 
-  const nx = Math.random() * 10; 
-  const ny = Math.random() * 10;
-  const noiseValueX = (noise.simplex2(nx, ny) + 1) / 2;
-  const noiseValueY = (noise.simplex2(nx + 5, ny + 5) + 1) / 2;
+  const left = (Math.random() - 0.5) * 100;
+  const top = (Math.random() - 0.5) * 100;
 
-  const left = -50 + noiseValueX * 200;
-  const top = -50 + noiseValueY * 200;
-  star.style.left = `${left}vw`;
-  star.style.top = `${top}vh`;
+  star.style.left = `calc(50% + ${left}${useVmax})`;
+  star.style.top = `calc(50% + ${top}${useVmax})`;
 
   const size = Math.random() * 20 + 10;
   star.style.width = `${size}px`;
   star.style.height = `${size}px`;
+  star.style.opacity = Math.random() * 0.6 + 0.4;
 
   starContainer.appendChild(star);
 }
+
+const layeredName = document.querySelector('.layered-name');
+
+let mouseX = 0;
+let mouseY = 0;
+let currentX = 0;
+let currentY = 0;
+const lerpFactor = 0.05;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX; 
+  mouseY = e.clientY;
+});
+
+function animate() {
+  const rect = layeredName.getBoundingClientRect();
+  const centerX = rect.left + rect.width;
+  const centerY = rect.top + rect.height;
+
+  const deltaX = mouseX - centerX;
+  const deltaY = mouseY - centerY;
+
+  currentX += (deltaX - currentX) * lerpFactor;
+  currentY += (deltaY - currentY) * lerpFactor;
+
+  layeredName.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+const hoverSound = new Audio('assets/audio/hover.mp3');
+hoverSound.volume = 1;
+
+let fadeOutInterval = null;
+
+layeredName.addEventListener('mouseenter', () => {
+  if (fadeOutInterval) {
+    clearInterval(fadeOutInterval);
+    fadeOutInterval = null;
+  }
+
+  hoverSound.currentTime = 0;
+  hoverSound.volume = 1;
+  hoverSound.play().catch(err => {
+    console.warn('Autoplay blocked:', err);
+  });
+});
+
+layeredName.addEventListener('mouseleave', () => {
+  if (fadeOutInterval) clearInterval(fadeOutInterval);
+
+  fadeOutInterval = setInterval(() => {
+    if (hoverSound.volume > 0.05) {
+      hoverSound.volume /= 1.2;
+    } else {
+      hoverSound.volume = 0;
+      hoverSound.pause();
+      clearInterval(fadeOutInterval);
+      fadeOutInterval = null;
+    }
+  }, 50);
+});
