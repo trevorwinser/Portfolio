@@ -117,29 +117,29 @@ a {
   }
 
   .layered-name span:nth-child(1) {
-    transform: translate(calc(-50% - 0.33rem), calc(-0.33rem));
+    transform: translate(calc(-50% - 0.5vw), calc(-0.5vh));
   }
 
   .layered-name span:nth-child(2) {
-    transform: translate(calc(-50% + 0.33rem), calc(0.33rem));
+    transform: translate(calc(-50% + 0.5vw), calc(0.5vh));
   }
 
   .layered-name span:nth-child(3) {
-    transform: translate(calc(-50% - 0.33rem), calc(0.33rem));
+    transform: translate(calc(-50% - 0.5vw), calc(0.5vh));
   }
 
   .layered-name span:nth-child(5) {
     opacity: 1;
-    transform: translate(calc(-50%), -1.4em);
+    transform: translate(calc(-50%), -12vh);
   }
 
   .layered-name span:nth-child(6) {
     opacity: 1;
-    transform: translate(calc(-50%), 2.4em);
+    transform: translate(calc(-50%), 12vh);
   }
 
   .layered-name span:nth-child(7) {
     opacity: 1;
-    transform: translate(calc(-50%), 3.8em);
+    transform: translate(calc(-50%), 24vh);
   }
 }
