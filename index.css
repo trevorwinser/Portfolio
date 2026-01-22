@@ -7,9 +7,13 @@ body {
 
 
 .center {
-  padding: 40vh 0px;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100vw;
 }
+
 .layered-name {
   justify-content: center;
   position: relative;
@@ -18,6 +22,7 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
+  z-index: 10;
 }
 
 .layered-name a {
@@ -28,7 +33,8 @@ body {
   pointer-events: auto;
 }
 
-.layered-name span,a {
+.layered-name span,
+a {
   z-index: 1;
   position: absolute;
   transform: translate(-50%);
@@ -39,28 +45,34 @@ body {
   color: #ff0057;
   z-index: 1;
 }
+
 .layered-name span:nth-child(2) {
   color: #00e1ff;
   z-index: 2;
 }
+
 .layered-name span:nth-child(3) {
   color: #ffde00;
   z-index: 3;
 }
+
 .layered-name span:nth-child(4) {
   color: #ffffff;
   z-index: 4;
 }
+
 .layered-name span:nth-child(5) {
   color: #00e1ff;
   z-index: 1;
   opacity: 0;
 }
+
 .layered-name span:nth-child(6) {
   color: #ff0057;
   z-index: 1;
   opacity: 0;
 }
+
 .layered-name span:nth-child(7) {
   color: #ffde00;
   z-index: 1;
@@ -70,181 +82,64 @@ body {
 .layered-name:hover span:nth-child(1) {
   transform: translate(calc(-50% - 0.33rem), calc(-0.33rem));
 }
+
 .layered-name:hover span:nth-child(2) {
   transform: translate(calc(-50% + 0.33rem), calc(0.33rem));
 }
+
 .layered-name:hover span:nth-child(3) {
   transform: translate(calc(-50% - 0.33rem), calc(0.33rem));
 }
+
 .layered-name:hover span:nth-child(5) {
   opacity: 1;
   transform: translate(calc(-50%), -1.4em);
 }
+
 .layered-name:hover span:nth-child(6) {
   opacity: 1;
   transform: translate(calc(-50%), 2.4em);
 }
+
 .layered-name:hover span:nth-child(7) {
   opacity: 1;
   transform: translate(calc(-50%), 3.8em);
 }
 
+/* Mobile: Always show expanded menu */
+@media (hover: none) and (pointer: coarse) {
+  .layered-name {
+    font-size: clamp(1.5rem, 8vw, 4rem);
+  }
 
-.circles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
+  .layered-name a {
+    pointer-events: auto;
+  }
 
-.circle {
-  z-index: 0;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
+  .layered-name span:nth-child(1) {
+    transform: translate(calc(-50% - 0.33rem), calc(-0.33rem));
+  }
 
-.top-left { 
-  position: absolute;
-  top: -200px; 
-  left: -200px; 
-}
-.top-right { 
-  position: absolute;
-  top: -200px; 
-  right: -200px; 
-}
-.bottom-left { 
-  position: absolute;
-  bottom: -200px; 
-  left: -200px; 
-}
-.bottom-right { 
-  position: absolute;
-  bottom: -200px; 
-  right: -200px; 
-}
+  .layered-name span:nth-child(2) {
+    transform: translate(calc(-50% + 0.33rem), calc(0.33rem));
+  }
 
-.layered-name:hover ~ .circles .top-left .circle {
-  opacity: 1;
-}
-.layered-name:hover ~ .circles .top-left .circle:nth-child(1) {
-  transform: translate(170px, 170px) scale(2);
-}
-.layered-name:hover ~ .circles .top-left .circle:nth-child(2) {
-  transform: translate(190px, 150px) scale(1.8);
-}
-.layered-name:hover ~ .circles .top-left .circle:nth-child(3) {
-  transform: translate(150px, 190px) scale(2.2);
-}
+  .layered-name span:nth-child(3) {
+    transform: translate(calc(-50% - 0.33rem), calc(0.33rem));
+  }
 
-.layered-name:hover ~ .circles .top-right .circle {
-  opacity: 1;
-}
-.layered-name:hover ~ .circles .top-right .circle:nth-child(1) {
-  transform: translate(-150px, 190px) scale(2.2);
-}
-.layered-name:hover ~ .circles .top-right .circle:nth-child(2) {
-  transform: translate(-190px, 150px) scale(1.8);
-}
-.layered-name:hover ~ .circles .top-right .circle:nth-child(3) {
-  transform: translate(-170px, 170px) scale(2);
-}
-
-@media screen and (min-height: 700px) {
-  .layered-name:hover ~ .circles .bottom-left .circle {
+  .layered-name span:nth-child(5) {
     opacity: 1;
-  }
-  .layered-name:hover ~ .circles .bottom-left .circle:nth-child(1) {
-    transform: translate(170px, -170px) scale(2);
-  }
-  .layered-name:hover ~ .circles .bottom-left .circle:nth-child(2) {
-    transform: translate(190px, -150px) scale(2.2);
-  }
-  .layered-name:hover ~ .circles .bottom-left .circle:nth-child(3) {
-    transform: translate(150px, -220px) scale(1.8);
+    transform: translate(calc(-50%), -1.4em);
   }
 
-  .layered-name:hover ~ .circles .bottom-right .circle {
+  .layered-name span:nth-child(6) {
     opacity: 1;
+    transform: translate(calc(-50%), 2.4em);
   }
-  .layered-name:hover ~ .circles .bottom-right .circle:nth-child(1) {
-    transform: translate(-150px, -190px) scale(2);
+
+  .layered-name span:nth-child(7) {
+    opacity: 1;
+    transform: translate(calc(-50%), 3.8em);
   }
-  .layered-name:hover ~ .circles .bottom-right .circle:nth-child(2) {
-    transform: translate(-190px, -150px) scale(2.2);
-  }
-  .layered-name:hover ~ .circles .bottom-right .circle:nth-child(3) {
-    transform: translate(-170px, -170px) scale(1.8);
-  }
-}
-
-.circle:nth-child(2n) { transition-delay: 0.1s; }
-.circle:nth-child(3n) { transition-delay: 0.2s; }
-
-.circle .top-left:nth-child(2n) { transition-delay: 0.1s; }
-.circle .top-left:nth-child(1n) { transition-delay: 0.2s; }
-.circle .bottom-left:nth-child(2n) { transition-delay: 0.1s; }
-.circle .bottom-left:nth-child(1n) { transition-delay: 0.2s; }
-
-
-.star-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: max(100vw, 100vh);
-  height: max(100vw, 100vh);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  overflow: hidden;
-  z-index: -1;
-  opacity: 0;
-  visibility: hidden;
-  animation: container-spin 10s linear infinite;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-}
-
-.layered-name:hover ~ .star-container {
-  opacity: 1;
-  visibility: visible;
-}
-
-.star-container img {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  opacity: 0;
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0) brightness(118%) contrast(100%);
-  transition: opacity 0.5s ease-in-out;
-}
-
-.layered-name:hover ~ .star-container img {
-  opacity: 1;
-}
-
-/* Rotation animations */
-.star-container img:nth-child(even) {
-  animation: spin-right 5s linear infinite;
-}
-.star-container img:nth-child(odd) {
-  animation: spin-left 5s linear infinite;
-}
-
-@keyframes container-spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }  
-  100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
-}
-
-@keyframes spin-right {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(2); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-@keyframes spin-left {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(-180deg) scale(2); }
-  100% { transform: rotate(-360deg) scale(1); }
 }
