@@ -116,30 +116,24 @@ a {
     pointer-events: auto;
   }
 
-  .layered-name span:nth-child(1) {
-    transform: translate(calc(-50% - 0.5vw), calc(-0.5vh));
-  }
-
-  .layered-name span:nth-child(2) {
-    transform: translate(calc(-50% + 0.5vw), calc(0.5vh));
-  }
-
+  .layered-name span:nth-child(1),
+  .layered-name span:nth-child(2),
   .layered-name span:nth-child(3) {
-    transform: translate(calc(-50% - 0.5vw), calc(0.5vh));
+    transform: translateX(-50%);
   }
 
   .layered-name span:nth-child(5) {
     opacity: 1;
-    transform: translate(calc(-50%), -12vh);
+    transform: translate(calc(-50%), max(-10vh, -1.4em));
   }
 
   .layered-name span:nth-child(6) {
     opacity: 1;
-    transform: translate(calc(-50%), 12vh);
+    transform: translate(calc(-50%), min(10vh, 2.4em));
   }
 
   .layered-name span:nth-child(7) {
     opacity: 1;
-    transform: translate(calc(-50%), 24vh);
+    transform: translate(calc(-50%), min(18vh, 3.8em));
   }
 }
