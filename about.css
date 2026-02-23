@@ -33,6 +33,9 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.about-item a {
+    color: #00d2ff;
+}
 
 .about-item p {
     font-size: 1.1rem;
