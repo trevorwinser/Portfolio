@@ -32,6 +32,11 @@ body {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.flex-item:hover {
+  transform: scale(1.1);
+  /* Slightly bigger on hover */
+}
+
 #contact {
   z-index: 2;
 }
@@ -83,6 +88,7 @@ body {
 @media (hover: none) and (pointer: coarse) {
   .flex-item {
     font-size: clamp(1.5rem, 8vw, 4rem);
+    transform: none;
   }
 
   #about,
