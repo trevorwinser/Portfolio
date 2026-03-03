@@ -65,6 +65,28 @@
 .about-item a {
     color: #00e1ff;
     font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.about-item a:hover {
+    color: #fff;
+}
+
+.about-item a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-item a:hover::after {
+    width: 100%;
 }
 
 .about-item p {
